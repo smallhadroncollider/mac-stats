@@ -1,11 +1,3 @@
-//
-//  RScript.swift
-//  macStats
-//
-//  Created by Mark Wales on 21/02/2018.
-//  Copyright © 2018 Mark Wales. All rights reserved.
-//
-
 import Cocoa
 
 class RScript: NSObject, CalculatorProtocol {

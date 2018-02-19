@@ -1,47 +1,34 @@
-//
-//  DataView.swift
-//  macStats
-//
-//  Created by Mark Wales on 21/02/2018.
-//  Copyright © 2018 Mark Wales. All rights reserved.
-//
-
 import Cocoa
 
 class DataView: NSObject {
-    private var items: [Float] = []
+    private var data: [Float] = []
     
     func getData() -> [Float] {
-        return items
+        return data
     }
     
-    func setData(data: [Float]) {
-        items = data
+    func setData(_ value: [Float]) {
+        data = value
     }
 }
 
 extension DataView : NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return items.count + 1
+        return data.count + 1
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        
-        if row < items.count {
-            return items[row]
-        }
-        
-        return ""
+        return row < data.count ? data[row] : ""
     }
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-        if row >= items.count {
-            items.append(0)
+        if row >= data.count {
+            data.append(0)
             tableView.reloadData()
         }
 
         if let val = (object as? NSString) {
-            items[row] = val.floatValue
+            data[row] = val.floatValue
         }
     }
 }
