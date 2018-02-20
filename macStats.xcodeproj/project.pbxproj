@@ -17,6 +17,7 @@
 		4DD144C220399669008CD8CC /* macStatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144C120399669008CD8CC /* macStatsUITests.swift */; };
 		4DD6D089203B3EEC00CD52ED /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4DD6D088203B3EEC00CD52ED /* icon.icns */; };
 		4DEB8072203DC637002B660B /* RScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEB8071203DC637002B660B /* RScript.swift */; };
+		4DEB8075203E170C002B660B /* CalculatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEB8074203E170C002B660B /* CalculatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		4DD144C320399669008CD8CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DD6D088203B3EEC00CD52ED /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		4DEB8071203DC637002B660B /* RScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RScript.swift; sourceTree = "<group>"; };
+		4DEB8074203E170C002B660B /* CalculatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,16 +106,13 @@
 		4DD144A020399669008CD8CC /* macStats */ = {
 			isa = PBXGroup;
 			children = (
-				4DD6D088203B3EEC00CD52ED /* icon.icns */,
+				4DEB8078203E1A02002B660B /* Misc */,
+				4DEB8077203E19CC002B660B /* View */,
+				4DEB8076203E19BE002B660B /* Data */,
 				4DD144A120399669008CD8CC /* AppDelegate.swift */,
-				4DD144A320399669008CD8CC /* ViewController.swift */,
-				4DEB8071203DC637002B660B /* RScript.swift */,
-				4DD144A520399669008CD8CC /* Document.swift */,
-				4DD144A720399669008CD8CC /* Assets.xcassets */,
-				4DD144A920399669008CD8CC /* Main.storyboard */,
-				4D7F345C203D751B00F1537B /* DataView.swift */,
 				4DD144AC20399669008CD8CC /* Info.plist */,
 				4DD144AD20399669008CD8CC /* macStats.entitlements */,
+				4DD144A720399669008CD8CC /* Assets.xcassets */,
 			);
 			path = macStats;
 			sourceTree = "<group>";
@@ -134,6 +133,34 @@
 				4DD144C320399669008CD8CC /* Info.plist */,
 			);
 			path = macStatsUITests;
+			sourceTree = "<group>";
+		};
+		4DEB8076203E19BE002B660B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4DD144A520399669008CD8CC /* Document.swift */,
+				4DEB8071203DC637002B660B /* RScript.swift */,
+				4DEB8074203E170C002B660B /* CalculatorProtocol.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4DEB8077203E19CC002B660B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4DD144A320399669008CD8CC /* ViewController.swift */,
+				4D7F345C203D751B00F1537B /* DataView.swift */,
+				4DD144A920399669008CD8CC /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4DEB8078203E1A02002B660B /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				4DD6D088203B3EEC00CD52ED /* icon.icns */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +300,7 @@
 				4DD144A420399669008CD8CC /* ViewController.swift in Sources */,
 				4DD144A220399669008CD8CC /* AppDelegate.swift in Sources */,
 				4D7F345D203D751B00F1537B /* DataView.swift in Sources */,
+				4DEB8075203E170C002B660B /* CalculatorProtocol.swift in Sources */,
 				4DD144A620399669008CD8CC /* Document.swift in Sources */,
 				4DEB8072203DC637002B660B /* RScript.swift in Sources */,
 			);

@@ -13,10 +13,10 @@ class ViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var textView: NSTextView!
     @IBOutlet var calculateButton: NSButton!
-    @IBOutlet var optionsMenu: NSPopUpButton!
+    @IBOutlet var operationsMenu: NSPopUpButton!
     
     let dataView = DataView()
-    var model: Document?
+    var calculator: CalculatorProtocol?
     
     var data: [Float] {
         get {
@@ -29,26 +29,20 @@ class ViewController: NSViewController {
     }
     
     func setOperations(operations: [String]) {
-        optionsMenu.addItems(withTitles: operations)
+        operationsMenu.addItems(withTitles: operations)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataView
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
     
     @IBAction func buttonPressed(sender: NSButton) {
-        let items = dataView.getData()
+        let data = dataView.getData()
 
         if
-            let option = optionsMenu.selectedItem?.title,
-            let value = model?.calculate(option: option, data: items)
+            let operation = operationsMenu.selectedItem?.title,
+            let value = calculator?.calculate(data, withOperation: operation)
             {
                 textView.string = value
             }

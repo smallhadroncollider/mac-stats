@@ -835,7 +835,7 @@
                     </view>
                     <connections>
                         <outlet property="calculateButton" destination="xuQ-1B-qEW" id="gPS-Np-Vtf"/>
-                        <outlet property="optionsMenu" destination="j2F-ez-S79" id="FLj-Xv-shP"/>
+                        <outlet property="operationsMenu" destination="j2F-ez-S79" id="2Ll-8E-wLr"/>
                         <outlet property="tableView" destination="2dm-zu-sxU" id="20S-68-gtx"/>
                         <outlet property="textView" destination="q2F-eQ-j6Q" id="bV5-hC-9VS"/>
                     </connections>

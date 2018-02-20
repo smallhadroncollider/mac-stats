@@ -8,11 +8,11 @@
 
 import Cocoa
 
-class Document: NSDocument {
+class Document: NSDocument, CalculatorProtocol {
     private let rScript = RScript()
     
-    func calculate(option: String, data: [Float]) -> String? {
-        return rScript.calculate(option: option, items: data)
+    func calculate(_ data: [Float], withOperation operation: String) -> String? {
+        return rScript.calculate(data, withOperation: operation)
     }
 
     override class var autosavesInPlace: Bool {
@@ -25,7 +25,7 @@ class Document: NSDocument {
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
         
         let vc = windowController.contentViewController as! ViewController
-        vc.model = self
+        vc.calculator = self
         vc.setOperations(operations: rScript.getOperations())
         
         self.addWindowController(windowController)

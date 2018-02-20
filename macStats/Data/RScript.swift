@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RScript: NSObject {
+class RScript: NSObject, CalculatorProtocol {
     private let path: String = "/usr/local/bin/Rscript"
     private let operations: [String: (String) -> (String)] = [
         "Mean": { (name: String) -> String in "mean(\(name))" },
@@ -19,12 +19,12 @@ class RScript: NSObject {
         return operations.keys.sorted()
     }
     
-    private func createArguments(option: String, items: [Float]) -> [String]? {
+    private func createArguments(operation: String, data: [Float]) -> [String]? {
         let name = "x"
-        let data = items.map(String.init).joined(separator: ",")
+        let collectionArg = data.map(String.init).joined(separator: ",")
         
-        if let operation = operations[option]?(name) {
-            return ["-e",  "\(name) <- c(\(data))", "-e", operation]
+        if let operationArg = operations[operation]?(name) {
+            return ["-e",  "\(name) <- c(\(collectionArg))", "-e", operationArg]
         }
         
         return nil
@@ -55,8 +55,8 @@ class RScript: NSObject {
         return nil
     }
     
-    func calculate(option: String, items: [Float]) -> String? {
-        if let arguments = createArguments(option: option, items: items) {
+    func calculate(_ data: [Float], withOperation operation: String) -> String? {
+        if let arguments = createArguments(operation: operation, data: data) {
             let task = createTask(arguments: arguments)
             return run(task: task);
         }
