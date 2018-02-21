@@ -9,11 +9,27 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    
+    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var textView: NSTextView!
+    @IBOutlet var calculateButton: NSButton!
+    
+    let dataView = DataView()
+    var model: Document?
+    
+    var data: [Float] {
+        get {
+            return dataView.getData()
+        }
+        set {
+            dataView.setData(data: newValue)
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource = dataView
     }
 
     override var representedObject: Any? {
@@ -21,7 +37,13 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    @IBAction func buttonPressed(sender: NSButton) {
+        let items = dataView.getData()
 
-
+        if let value = model?.calculate(data: items) {
+            textView.string = value
+        }
+    }
 }
 

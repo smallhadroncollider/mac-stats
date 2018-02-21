@@ -9,10 +9,10 @@
 import Cocoa
 
 class Document: NSDocument {
-
-    override init() {
-        super.init()
-        // Add your subclass-specific initialization here.
+    private let rScript = RScript()
+    
+    func calculate(data: [Float]) -> String? {
+        return rScript.calculate(items: data)
     }
 
     override class var autosavesInPlace: Bool {
@@ -23,6 +23,10 @@ class Document: NSDocument {
         // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
+        
+        let vc = windowController.contentViewController as! ViewController
+        vc.model = self
+        
         self.addWindowController(windowController)
     }
 
