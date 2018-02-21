@@ -10,9 +10,11 @@ import Cocoa
 
 class RScript: NSObject, CalculatorProtocol {
     private let path: String = "/usr/local/bin/Rscript"
-    private let operations: [String: (String) -> (String)] = [
-        "Mean": { (name: String) -> String in "mean(\(name))" },
-        "Standard Deviation": { (name: String) -> String in "sd(\(name))" },
+    private let operations: [String: (String) -> ([String])] = [
+        "Mean": { name in ["mean(\(name))"] },
+        "Standard Deviation": { name in ["sd(\(name))"] },
+        "Variance": { name in ["y <- \(name)^2", "var(y)"] },
+        "Fit": { name in ["y <- \(name)^2", "lm_1 <- lm(y ~ \(name))", "summary(lm_1)"] },
     ]
 
     func getOperations() -> [String] {
@@ -23,8 +25,9 @@ class RScript: NSObject, CalculatorProtocol {
         let name = "x"
         let collectionArg = data.map(String.init).joined(separator: ",")
         
-        if let operationArg = operations[operation]?(name) {
-            return ["-e",  "\(name) <- c(\(collectionArg))", "-e", operationArg]
+        if let operationArgs = operations[operation]?(name) {
+            let allOperations = ["\(name) <- c(\(collectionArg))"] + operationArgs
+            return allOperations.reduce([], { (result, next) in result + ["-e", next] })
         }
         
         return nil
@@ -57,8 +60,9 @@ class RScript: NSObject, CalculatorProtocol {
     
     func calculate(_ data: [Float], withOperation operation: String) -> String? {
         if let arguments = createArguments(operation: operation, data: data) {
+            print(arguments)
             let task = createTask(arguments: arguments)
-            return run(task: task);
+            return run(task: task)
         }
         
         return nil
