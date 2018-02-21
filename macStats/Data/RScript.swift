@@ -60,7 +60,6 @@ class RScript: NSObject, CalculatorProtocol {
     
     func calculate(_ data: [Float], withOperation operation: String) -> String? {
         if let arguments = createArguments(operation: operation, data: data) {
-            print(arguments)
             let task = createTask(arguments: arguments)
             return run(task: task)
         }
