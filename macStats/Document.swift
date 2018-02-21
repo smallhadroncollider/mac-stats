@@ -11,8 +11,8 @@ import Cocoa
 class Document: NSDocument {
     private let rScript = RScript()
     
-    func calculate(data: [Float]) -> String? {
-        return rScript.calculate(items: data)
+    func calculate(option: String, data: [Float]) -> String? {
+        return rScript.calculate(option: option, items: data)
     }
 
     override class var autosavesInPlace: Bool {
@@ -26,6 +26,7 @@ class Document: NSDocument {
         
         let vc = windowController.contentViewController as! ViewController
         vc.model = self
+        vc.setOperations(operations: rScript.getOperations())
         
         self.addWindowController(windowController)
     }

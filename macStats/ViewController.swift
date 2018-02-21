@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var textView: NSTextView!
     @IBOutlet var calculateButton: NSButton!
+    @IBOutlet var optionsMenu: NSPopUpButton!
     
     let dataView = DataView()
     var model: Document?
@@ -25,6 +26,10 @@ class ViewController: NSViewController {
             dataView.setData(data: newValue)
             tableView.reloadData()
         }
+    }
+    
+    func setOperations(operations: [String]) {
+        optionsMenu.addItems(withTitles: operations)
     }
 
     override func viewDidLoad() {
@@ -41,9 +46,12 @@ class ViewController: NSViewController {
     @IBAction func buttonPressed(sender: NSButton) {
         let items = dataView.getData()
 
-        if let value = model?.calculate(data: items) {
-            textView.string = value
-        }
+        if
+            let option = optionsMenu.selectedItem?.title,
+            let value = model?.calculate(option: option, data: items)
+            {
+                textView.string = value
+            }
     }
 }
 

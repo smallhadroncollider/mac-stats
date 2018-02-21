@@ -10,10 +10,24 @@ import Cocoa
 
 class RScript: NSObject {
     private let path: String = "/usr/local/bin/Rscript"
+    private let operations: [String: (String) -> (String)] = [
+        "Mean": { (name: String) -> String in "mean(\(name))" },
+        "Standard Deviation": { (name: String) -> String in "sd(\(name))" },
+    ]
+
+    func getOperations() -> [String] {
+        return operations.keys.sorted()
+    }
     
-    private func createArguments(items: [Float]) -> [String] {
+    private func createArguments(option: String, items: [Float]) -> [String]? {
+        let name = "x"
         let data = items.map(String.init).joined(separator: ",")
-        return ["-e",  "x <- c(\(data))", "-e", "sd(x)"]
+        
+        if let operation = operations[option]?(name) {
+            return ["-e",  "\(name) <- c(\(data))", "-e", operation]
+        }
+        
+        return nil
     }
     
     private func createTask(arguments: [String]) -> Process {
@@ -41,9 +55,12 @@ class RScript: NSObject {
         return nil
     }
     
-    func calculate(items: [Float]) -> String? {
-        let arguments = createArguments(items: items)
-        let task = createTask(arguments: arguments)
-        return run(task: task);
+    func calculate(option: String, items: [Float]) -> String? {
+        if let arguments = createArguments(option: option, items: items) {
+            let task = createTask(arguments: arguments)
+            return run(task: task);
+        }
+        
+        return nil
     }
 }

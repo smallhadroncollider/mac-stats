@@ -709,15 +709,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHD-74-Eh8">
-                                <rect key="frame" x="20" y="560" width="180" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="ED1-KF-dhm">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </searchFieldCell>
-                            </searchField>
                             <splitView fixedFrame="YES" arrangesAllSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZM-dG-lpM">
                                 <rect key="frame" x="208" y="0.0" width="592" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -831,10 +822,20 @@
                                     <action selector="buttonPressedWithSender:" target="5gI-5U-AMq" id="719-kY-5r2"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j2F-ez-S79">
+                                <rect key="frame" x="18" y="556" width="185" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="k15-Tz-cqD">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="xxb-8x-2Sh"/>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="calculateButton" destination="xuQ-1B-qEW" id="gPS-Np-Vtf"/>
+                        <outlet property="optionsMenu" destination="j2F-ez-S79" id="FLj-Xv-shP"/>
                         <outlet property="tableView" destination="2dm-zu-sxU" id="20S-68-gtx"/>
                         <outlet property="textView" destination="q2F-eQ-j6Q" id="bV5-hC-9VS"/>
                     </connections>
