@@ -22,13 +22,14 @@ extension DataView : NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+
         if row >= data.count {
             data.append(0)
             tableView.reloadData()
         }
 
-        if let val = (object as? NSString) {
-            data[row] = val.floatValue
+        if let value = object as? Float {
+            data[row] = value
         }
     }
 }

@@ -6,6 +6,7 @@ class ViewController: NSViewController {
     @IBOutlet var textView: NSTextView!
     @IBOutlet var calculateButton: NSButton!
     @IBOutlet var search: NSSearchField!
+    @IBOutlet var numberFormatter: NumberFormatter!
     
     let dataView = DataView()
     let operationsView = OperationsView()
