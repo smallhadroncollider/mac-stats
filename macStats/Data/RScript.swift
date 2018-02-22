@@ -56,7 +56,9 @@ class RScript: NSObject, CalculatorProtocol {
             let operation = operations[op]?.init(),
             let arguments = createArguments(operation: operation, data: data) {
                 let task = createTask(arguments: arguments)
-                return run(task: task)
+                if let str = run(task: task) {
+                    return operation.parse(str)
+                }
             }
         
         return nil

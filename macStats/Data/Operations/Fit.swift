@@ -19,4 +19,10 @@ class Fit: Operation, OperationProtocol {
             "summary(lm_1)",
         ]
     }
+    
+    override func parse(_ string: String) -> String {
+        return string.replacingOccurrences(of: "Call:", with: "")
+                     .replacingOccurrences(of: "lm(formula = y ~ x)", with: "")
+                     .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
 }
