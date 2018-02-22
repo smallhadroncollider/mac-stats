@@ -7,6 +7,7 @@ class RScript: NSObject, CalculatorProtocol {
         "Standard Deviation": StandardDeviation.self,
         "Variance": Variance.self,
         "Fit": Fit.self,
+        "T-Test": TTest.self,
     ]
 
     func getOperations() -> [String] {
