@@ -17,7 +17,7 @@ class Document: NSDocument, CalculatorProtocol {
     private func setupViewController(windowController: NSWindowController) {
         let vc = windowController.contentViewController as! ViewController
         vc.calculator = self
-        vc.setOperations(operations: rScript.getOperations())
+        vc.setOperations(rScript.getOperations())
     }
 
     override func makeWindowControllers() {

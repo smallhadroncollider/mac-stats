@@ -1,28 +1,32 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var dataTable: NSTableView!
+    @IBOutlet var operationsTable: NSTableView!
     @IBOutlet var textView: NSTextView!
     @IBOutlet var calculateButton: NSButton!
-    @IBOutlet var operationsMenu: NSPopUpButton!
     
     let dataView = DataView()
+    let operationsView = OperationsView()
+    
     var calculator: CalculatorProtocol?
     
-    func setOperations(operations: [String]) {
-        operationsMenu.addItems(withTitles: operations)
+    func setOperations(_ operations: [String]) {
+        operationsView.setOperations(operations)
+        operationsTable.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = dataView
+        dataTable.dataSource = dataView
+        operationsTable.dataSource = operationsView
     }
     
     @IBAction func buttonPressed(sender: NSButton) {
         let data = dataView.getData()
-
+        
         if
-            let operation = operationsMenu.selectedItem?.title,
+            let operation = operationsView.operationFor(row: operationsTable.selectedRow),
             let value = calculator?.calculate(data, withOperation: operation)
             {
                 textView.string = value

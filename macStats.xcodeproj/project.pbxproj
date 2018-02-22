@@ -14,6 +14,7 @@
 		4D8C5938203EFC1F00CAEC4B /* StandardDeviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C5937203EFC1F00CAEC4B /* StandardDeviation.swift */; };
 		4D8C593A203EFC4300CAEC4B /* Variance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C5939203EFC4300CAEC4B /* Variance.swift */; };
 		4D8C593C203EFC9100CAEC4B /* Fit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C593B203EFC9100CAEC4B /* Fit.swift */; };
+		4D8C5940203F199C00CAEC4B /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C593F203F199C00CAEC4B /* OperationsView.swift */; };
 		4DD144A220399669008CD8CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A120399669008CD8CC /* AppDelegate.swift */; };
 		4DD144A420399669008CD8CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A320399669008CD8CC /* ViewController.swift */; };
 		4DD144A620399669008CD8CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A520399669008CD8CC /* Document.swift */; };
@@ -51,6 +52,7 @@
 		4D8C5937203EFC1F00CAEC4B /* StandardDeviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDeviation.swift; sourceTree = "<group>"; };
 		4D8C5939203EFC4300CAEC4B /* Variance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variance.swift; sourceTree = "<group>"; };
 		4D8C593B203EFC9100CAEC4B /* Fit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit.swift; sourceTree = "<group>"; };
+		4D8C593F203F199C00CAEC4B /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
 		4DD1449E20399669008CD8CC /* macStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD144A120399669008CD8CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD144A320399669008CD8CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,10 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				4D8C5931203EF14500CAEC4B /* OperationProtocol.swift */,
+				4D8C5935203EF51A00CAEC4B /* Operation.swift */,
 				4D8C5933203EF1D300CAEC4B /* Mean.swift */,
 				4D8C5937203EFC1F00CAEC4B /* StandardDeviation.swift */,
 				4D8C5939203EFC4300CAEC4B /* Variance.swift */,
-				4D8C5935203EF51A00CAEC4B /* Operation.swift */,
 				4D8C593B203EFC9100CAEC4B /* Fit.swift */,
 			);
 			path = Operations;
@@ -164,9 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				4D8C5930203EF10400CAEC4B /* Operations */,
+				4DEB8074203E170C002B660B /* CalculatorProtocol.swift */,
 				4DD144A520399669008CD8CC /* Document.swift */,
 				4DEB8071203DC637002B660B /* RScript.swift */,
-				4DEB8074203E170C002B660B /* CalculatorProtocol.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -174,9 +176,10 @@
 		4DEB8077203E19CC002B660B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4DD144A920399669008CD8CC /* Main.storyboard */,
 				4DD144A320399669008CD8CC /* ViewController.swift */,
 				4D7F345C203D751B00F1537B /* DataView.swift */,
-				4DD144A920399669008CD8CC /* Main.storyboard */,
+				4D8C593F203F199C00CAEC4B /* OperationsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8C5938203EFC1F00CAEC4B /* StandardDeviation.swift in Sources */,
+				4D8C5940203F199C00CAEC4B /* OperationsView.swift in Sources */,
 				4DD144A420399669008CD8CC /* ViewController.swift in Sources */,
 				4D8C593A203EFC4300CAEC4B /* Variance.swift in Sources */,
 				4D8C5936203EF51A00CAEC4B /* Operation.swift in Sources */,
