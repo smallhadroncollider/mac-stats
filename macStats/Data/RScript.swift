@@ -10,27 +10,20 @@ import Cocoa
 
 class RScript: NSObject, CalculatorProtocol {
     private let path: String = "/usr/local/bin/Rscript"
-    private let operations: [String: (String) -> ([String])] = [
-        "Mean": { name in ["mean(\(name))"] },
-        "Standard Deviation": { name in ["sd(\(name))"] },
-        "Variance": { name in ["y <- \(name)^2", "var(y)"] },
-        "Fit": { name in ["y <- \(name)^2", "lm_1 <- lm(y ~ \(name))", "summary(lm_1)"] },
+    private let operations: [String: OperationProtocol.Type] = [
+        "Mean": Mean.self,
+        "Standard Deviation": StandardDeviation.self,
+        "Variance": Variance.self,
+        "Fit": Fit.self,
     ]
 
     func getOperations() -> [String] {
         return operations.keys.sorted()
     }
     
-    private func createArguments(operation: String, data: [Float]) -> [String]? {
-        let name = "x"
-        let collectionArg = data.map(String.init).joined(separator: ",")
-        
-        if let operationArgs = operations[operation]?(name) {
-            let allOperations = ["\(name) <- c(\(collectionArg))"] + operationArgs
-            return allOperations.reduce([], { (result, next) in result + ["-e", next] })
-        }
-        
-        return nil
+    private func createArguments(operation: OperationProtocol, data: [Float]) -> [String]? {
+        let arguments = operation.arguments(data)
+        return arguments.reduce([], { (result, next) in result + ["-e", next] })
     }
     
     private func createTask(arguments: [String]) -> Process {
@@ -58,11 +51,13 @@ class RScript: NSObject, CalculatorProtocol {
         return nil
     }
     
-    func calculate(_ data: [Float], withOperation operation: String) -> String? {
-        if let arguments = createArguments(operation: operation, data: data) {
-            let task = createTask(arguments: arguments)
-            return run(task: task)
-        }
+    func calculate(_ data: [Float], withOperation op: String) -> String? {
+        if
+            let operation = operations[op]?.init(),
+            let arguments = createArguments(operation: operation, data: data) {
+                let task = createTask(arguments: arguments)
+                return run(task: task)
+            }
         
         return nil
     }
