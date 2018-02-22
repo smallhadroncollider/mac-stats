@@ -818,11 +818,14 @@
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfa-Oi-DEx">
                                 <rect key="frame" x="20" y="558" width="180" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Iig-S8-kXR">
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="Iig-S8-kXR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </searchFieldCell>
+                                <connections>
+                                    <action selector="searchChangedWithSender:" target="5gI-5U-AMq" id="4jl-Ce-aT3"/>
+                                </connections>
                             </searchField>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynC-Dd-Nyu">
                                 <rect key="frame" x="20" y="54" width="180" height="496"/>
@@ -881,6 +884,7 @@
                         <outlet property="calculateButton" destination="xuQ-1B-qEW" id="gPS-Np-Vtf"/>
                         <outlet property="dataTable" destination="2dm-zu-sxU" id="ONA-Zj-2zF"/>
                         <outlet property="operationsTable" destination="NJZ-6N-2al" id="YF6-aX-K2s"/>
+                        <outlet property="search" destination="tfa-Oi-DEx" id="oiA-lr-OY6"/>
                         <outlet property="textView" destination="q2F-eQ-j6Q" id="bV5-hC-9VS"/>
                     </connections>
                 </viewController>

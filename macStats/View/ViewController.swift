@@ -5,6 +5,7 @@ class ViewController: NSViewController {
     @IBOutlet var operationsTable: NSTableView!
     @IBOutlet var textView: NSTextView!
     @IBOutlet var calculateButton: NSButton!
+    @IBOutlet var search: NSSearchField!
     
     let dataView = DataView()
     let operationsView = OperationsView()
@@ -20,6 +21,11 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         dataTable.dataSource = dataView
         operationsTable.dataSource = operationsView
+    }
+    
+    @IBAction func searchChanged(sender: NSSearchField) {
+        operationsView.limitTo(sender.stringValue)
+        operationsTable.reloadData()
     }
     
     @IBAction func buttonPressed(sender: NSButton) {
