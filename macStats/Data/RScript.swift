@@ -35,6 +35,7 @@ class RScript: NSObject, CalculatorProtocol {
     private func run(task: Process) -> String? {
         let pipe: Pipe = Pipe()
         task.standardOutput = pipe
+        task.standardError = pipe
         
         do {
             try task.run()
