@@ -1,6 +1,6 @@
-import Cocoa
+import Foundation
 
-class RScript: NSObject, CalculatorProtocol {
+class RScript: CalculatorProtocol {
     private let path: String = "/usr/local/bin/Rscript"
     private let operations: [String: OperationProtocol.Type] = [
         "Mean": Mean.self,
@@ -16,7 +16,7 @@ class RScript: NSObject, CalculatorProtocol {
     
     private func createArguments(operation: OperationProtocol, data: [Float]) -> [String]? {
         let arguments = operation.arguments(data)
-        return arguments.reduce([], { (result, next) in result + ["-e", next] })
+        return arguments.reduce([]) { (result, next) in result + ["-e", next] }
     }
     
     private func createTask(arguments: [String]) -> Process {

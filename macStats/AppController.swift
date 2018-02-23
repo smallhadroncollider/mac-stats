@@ -1,6 +1,6 @@
 import Cocoa
 
-class AppController: NSObject, OperationControllerProtocol {
+class AppController: OperationControllerProtocol {
     private let rScript = RScript()
     
     func calculate(withOperation operation: String) {
