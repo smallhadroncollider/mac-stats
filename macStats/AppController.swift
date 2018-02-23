@@ -2,6 +2,7 @@ import Cocoa
 
 class AppController: OperationControllerProtocol {
     private let rScript = RScript()
+    private var operationsWindowController: NSWindowController?
     
     func calculate(withOperation operation: String) {
         let document = NSDocumentController.shared.currentDocument as? Document
@@ -16,11 +17,16 @@ class AppController: OperationControllerProtocol {
     func setupPanels() {
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
         
-        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Operations Window Controller")) as! NSWindowController
-        windowController.showWindow(nil)
+        operationsWindowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Operations Window Controller")) as? NSWindowController
+        showOperations()
         
-        let operationsVC = windowController.contentViewController as? OperationsViewController
-        operationsVC?.oc = self
-        operationsVC?.setOperations(rScript.getOperations())
+        if let operationsVC = operationsWindowController?.contentViewController as? OperationsViewController {
+            operationsVC.oc = self
+            operationsVC.setOperations(rScript.getOperations())
+        }
+    }
+    
+    func showOperations() {
+        operationsWindowController?.showWindow(nil)
     }
 }
