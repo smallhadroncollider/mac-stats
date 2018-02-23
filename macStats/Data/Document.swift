@@ -1,36 +1,21 @@
 import Cocoa
 
 class Document: NSDocument {
-    private let rScript = RScript()
     private var dataVC: DataViewController?
-    private var operationsVC: OperationsViewController?
     
-    func calculate(withOperation operation: String) {
-        if let data = dataVC?.getData(),
-           let result = rScript.calculate(data, withOperation: operation)
-        {
-            dataVC?.setLog(result)
-        }
+    func getData() -> [Float]? {
+        return dataVC?.getData()
     }
     
-    private func makeWindowController(_ storyboard: NSStoryboard, withID id: String) -> NSWindowController {
-        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(id)) as! NSWindowController
-        self.addWindowController(windowController)
-        return windowController
+    func setLog(_ value: String) {
+        dataVC?.setLog(value)
     }
     
     override func makeWindowControllers() {
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        
-        let documentWC = makeWindowController(storyboard, withID: "Document Window Controller")
-        dataVC = documentWC.contentViewController as? DataViewController
-
-        let operationsWC = makeWindowController(storyboard, withID: "Operations Window Controller")
-        operationsWC.showWindow(nil)
-        
-        operationsVC = operationsWC.contentViewController as? OperationsViewController
-        operationsVC?.document = self
-        operationsVC?.setOperations(rScript.getOperations())
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
+        self.addWindowController(windowController)
+        dataVC = windowController.contentViewController as? DataViewController
     }
     
     override class var autosavesInPlace: Bool {

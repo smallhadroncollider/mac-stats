@@ -5,9 +5,8 @@ class OperationsViewController: NSViewController {
     @IBOutlet var calculate: NSButton!
     @IBOutlet var search: NSSearchField!
     
-    let operationsView = OperationsView()
-    
-    var document: Document?
+    private let operationsView = OperationsView()
+    var oc: OperationControllerProtocol?
     
     func setOperations(_ ops: [String]) {
         operationsView.setOperations(ops)
@@ -26,7 +25,7 @@ class OperationsViewController: NSViewController {
     
     @IBAction func buttonPressed(sender: NSButton) {
         if let operation = operationsView.operationFor(row: operations.selectedRow) {
-            document?.calculate(withOperation: operation)
+            oc?.calculate(withOperation: operation)
         }
     }
 }

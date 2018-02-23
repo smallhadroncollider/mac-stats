@@ -831,7 +831,7 @@
         <scene sceneID="0Xv-tE-det">
             <objects>
                 <windowController storyboardIdentifier="Operations Window Controller" id="tr0-Yq-6VN" sceneMemberID="viewController">
-                    <window key="window" title="Operations" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="ueL-GM-SHg" customClass="NSPanel">
+                    <window key="window" title="Operations" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="ueL-GM-SHg" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" nonactivatingPanel="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="516" y="357" width="250" height="270"/>

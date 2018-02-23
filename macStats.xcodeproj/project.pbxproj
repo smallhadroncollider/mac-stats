@@ -17,6 +17,8 @@
 		4D8C5940203F199C00CAEC4B /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C593F203F199C00CAEC4B /* OperationsView.swift */; };
 		4D8C5942203F272800CAEC4B /* TTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C5941203F272800CAEC4B /* TTest.swift */; };
 		4D8C59442040104500CAEC4B /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C59432040104500CAEC4B /* OperationsViewController.swift */; };
+		4D991EAD204065130065EFD7 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D991EAC204065130065EFD7 /* AppController.swift */; };
+		4D991EAF204066020065EFD7 /* OperationControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D991EAE204066020065EFD7 /* OperationControllerProtocol.swift */; };
 		4DD144A220399669008CD8CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A120399669008CD8CC /* AppDelegate.swift */; };
 		4DD144A420399669008CD8CC /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A320399669008CD8CC /* DataViewController.swift */; };
 		4DD144A620399669008CD8CC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD144A520399669008CD8CC /* Document.swift */; };
@@ -57,6 +59,8 @@
 		4D8C593F203F199C00CAEC4B /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
 		4D8C5941203F272800CAEC4B /* TTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTest.swift; sourceTree = "<group>"; };
 		4D8C59432040104500CAEC4B /* OperationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
+		4D991EAC204065130065EFD7 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		4D991EAE204066020065EFD7 /* OperationControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationControllerProtocol.swift; sourceTree = "<group>"; };
 		4DD1449E20399669008CD8CC /* macStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD144A120399669008CD8CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD144A320399669008CD8CC /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				4DEB8077203E19CC002B660B /* View */,
 				4DEB8076203E19BE002B660B /* Data */,
 				4DD144A120399669008CD8CC /* AppDelegate.swift */,
+				4D991EAC204065130065EFD7 /* AppController.swift */,
+				4D991EAE204066020065EFD7 /* OperationControllerProtocol.swift */,
 				4DD144AC20399669008CD8CC /* Info.plist */,
 				4DD144AD20399669008CD8CC /* macStats.entitlements */,
 				4DD144A720399669008CD8CC /* Assets.xcassets */,
@@ -335,7 +341,9 @@
 				4D8C5938203EFC1F00CAEC4B /* StandardDeviation.swift in Sources */,
 				4D8C5940203F199C00CAEC4B /* OperationsView.swift in Sources */,
 				4DD144A420399669008CD8CC /* DataViewController.swift in Sources */,
+				4D991EAD204065130065EFD7 /* AppController.swift in Sources */,
 				4D8C593A203EFC4300CAEC4B /* Variance.swift in Sources */,
+				4D991EAF204066020065EFD7 /* OperationControllerProtocol.swift in Sources */,
 				4D8C5936203EF51A00CAEC4B /* Operation.swift in Sources */,
 				4DD144A220399669008CD8CC /* AppDelegate.swift in Sources */,
 				4D7F345D203D751B00F1537B /* DataView.swift in Sources */,

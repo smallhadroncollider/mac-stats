@@ -2,8 +2,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    private let appController: AppController = AppController()
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        appController.setupPanels()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
