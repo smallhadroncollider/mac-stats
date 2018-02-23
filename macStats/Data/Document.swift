@@ -1,28 +1,36 @@
 import Cocoa
 
-class Document: NSDocument, CalculatorProtocol {
+class Document: NSDocument {
     private let rScript = RScript()
+    private var dataVC: DataViewController?
+    private var operationsVC: OperationsViewController?
     
-    func calculate(_ data: [Float], withOperation operation: String) -> String? {
-        return rScript.calculate(data, withOperation: operation)
+    func calculate(withOperation operation: String) {
+        if let data = dataVC?.getData(),
+           let result = rScript.calculate(data, withOperation: operation)
+        {
+            dataVC?.setLog(result)
+        }
     }
     
-    private func setupStoryboard() -> NSWindowController {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Document Window Controller")) as! NSWindowController
+    private func makeWindowController(_ storyboard: NSStoryboard, withID id: String) -> NSWindowController {
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(id)) as! NSWindowController
         self.addWindowController(windowController)
         return windowController
     }
     
-    private func setupViewController(windowController: NSWindowController) {
-        let vc = windowController.contentViewController as! ViewController
-        vc.calculator = self
-        vc.setOperations(rScript.getOperations())
-    }
-
     override func makeWindowControllers() {
-        let windowController = setupStoryboard()
-        setupViewController(windowController: windowController)
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+        
+        let documentWC = makeWindowController(storyboard, withID: "Document Window Controller")
+        dataVC = documentWC.contentViewController as? DataViewController
+
+        let operationsWC = makeWindowController(storyboard, withID: "Operations Window Controller")
+        operationsWC.showWindow(nil)
+        
+        operationsVC = operationsWC.contentViewController as? OperationsViewController
+        operationsVC?.document = self
+        operationsVC?.setOperations(rScript.getOperations())
     }
     
     override class var autosavesInPlace: Bool {
